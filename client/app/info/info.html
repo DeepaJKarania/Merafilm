@@ -1,0 +1,134 @@
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/style.css" />
+<style>
+.timetable{
+
+font-size:1.1em;
+color:white;
+text-align: center;
+}
+.timetable-div
+{
+  margin-top: 5px;
+}
+
+
+
+</style>
+<div class="container" ng-repeat="x in $ctrl.awesomeThings" >
+
+  <div  class="row"  >
+    <div class="col-md-4">
+
+
+
+
+      <img src="{{x.poster}}"  class="img-responsive img-rounded " alt="img"/>
+<p class="text-nowrap h1" > {{x.title}}<br/><label style="font-size:60%;color:red">Liked by</label>
+   <span class="glyphicon glyphicon-heart " style="color:red;font-size:.8em;padding-left: 1cm"  >
+   </span><strong style="font-size:.8em" >{{$ctrl.rate}}%</strong>
+</p>
+   <span class="badge" style="font-size:1em;" >{{x.genere}}</span>
+<span ng-if="$ctrl.totaltime!='NaN hr NaN min'">
+   <span class="glyphicon glyphicon-time"   style="font-size:1.2em;padding-left: 1cm"></span>
+   <strong style="font-size:1em">{{$ctrl.totaltime}} </strong>
+ </span>
+<table>
+  <tr>
+    <td>
+<div style="margin-top: 10px;padding-left: 1cm">
+  <p ><u><b>Movie Rating</b></u></p>
+</div>
+</td>
+</tr>
+<tr>
+  <td>
+   <div class="rate">
+
+       <input type="radio" id="star5" name="rate" value="5" ng-click="$ctrl.rate1(5)" /><label for="star5" title="text">5 stars</label>
+       <input type="radio" id="star4" name="rate" value="4" ng-click="$ctrl.rate1(4)" /><label for="star4" title="text">4 stars</label>
+       <input type="radio" id="star3" name="rate" value="3" ng-click="$ctrl.rate1(3)" /><label for="star3" title="text">3 stars</label>
+       <input type="radio" id="star2" name="rate" value="2" ng-click="$ctrl.rate1(2)" /><label for="star2" title="text">2 stars</label>
+       <input type="radio" id="star1" name="rate" value="1" ng-click="$ctrl.rate1(1)" /><label for="star1" title="text">1 star</label>
+   </div>
+ </td>
+ </tr>
+ </table>
+</div>
+
+
+ <div class="col-md-8">
+   <span>
+<!-- class="embed-responsive embed-responsive-16by9" -->
+   <div >
+     <iframe class="embed-responsive-item" id="player"  src="https://www.youtube.com/embed/" type="text/html" width="100%" height="450"  allowfullscreen/>
+   </div>
+<span>
+
+   </div>
+ </div>
+<!-- first row end -->
+
+    <div class="row ">
+      <div class="col-md-4">
+
+
+
+      </div>
+      <div class="col-md-6">
+<h4> <u><b>SYNOPIS</b></u></h4>
+{{x.plot}}
+      </div>
+
+      <div class="col-md-2"  >
+<label class="label-info form-control timetable " >Showing in State</label>
+
+<div  class="timetable-div">
+<span ng-repeat="city in $ctrl.newUniquestate " >
+  <a ng-click="$ctrl.getdate(city)"  href="#">
+<span class="badge" >
+  {{city}}
+
+</span>
+</a>
+
+</span>
+</div>
+
+<div  class="timetable-div" ng-if="$ctrl.d==1"   >
+  <label class="label-info form-control timetable" >Showing Date</label>
+  <div class="timetable-div" >
+<!-- to select date -->
+<span ng-repeat="date in $ctrl.select_date track by $index" >
+
+      <a href="#" ng-click=$ctrl.gettime(date,city) > <span class="badge" >{{date}}</span></a>
+</span>
+</div>
+</div>
+
+<!-- select time -->
+<div class="timetable-div"  ng-if="$ctrl.t==1" >
+  <label class=" label-info form-control timetable" style="">Show Time</label>
+  <div class="timetable-div">
+<span ng-repeat="time in $ctrl.selecttime track by $index" >
+      <a href="" ng-click="$ctrl.gettlocation(time)" > <span class="badge" >{{time}}</span></a>
+</span>
+</div>
+</div>
+
+
+<div  class="timetable-div" ng-if="$ctrl.tl==1" >
+  <label class="label-info form-control timetable " >Theater Location</label>
+  <div class="timetable-div">
+<span ng-repeat="name in $ctrl.name track by $index" >
+      <a href="" ng-click="$ctrl.seatselect(name)" > <span class="badge" >{{name}}</span></a>
+</span>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+</div>

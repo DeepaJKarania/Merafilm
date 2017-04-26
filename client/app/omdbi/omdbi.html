@@ -1,0 +1,119 @@
+ <div class="container"  >
+
+<div class="row">
+<div class="col-sm-12">
+  <div class="form-group ">
+
+
+<h1 align="center"><label >Search</label></h1>
+<form  name="form">
+ <input type="text" name="t" ng-model="$ctrl.t" placeholder="Enter the Movei Name" class="form-control"  required /><span class="glyphicon glyphicon-asterisk" style="color:red"></span><br>
+ <input type="number" name="y" ng-model="$ctrl.y" placeholder="Enter the year" class="form-control"  /><br>
+ <button type="submit" class="btn btn-primary center-block" ng-click="$ctrl.getdata()" ng-disabled="form.$invalid">
+   <span class="glyphicon glyphicon-search" aria-hidden="true">
+ </span>  Search</button>
+
+<span ng-show="$ctrl.Deleted=='Deleted'" class="alert alert-success">Deleted Successfully</span>
+
+ </form>
+
+
+
+
+
+
+
+<div ng-if="$ctrl.omdbi.Poster">
+<table class="table">
+<h3 align="center">  <label class="label label-default">Search Result</label></h3>
+<tr>
+<th>Poster</th>
+<th>Move Name</th>
+<th>Year</th>
+<th>Genere</th>
+<th>Star cast</th>
+<th>Director</th>
+<th>Language</th>
+<th>Duration</th>
+</tr>
+<tbody>
+<tr>
+
+  <td><img src="{{$ctrl.omdbi.Poster}}" alt="image" width="150" height="150"/></td>
+  <td>{{$ctrl.omdbi.Title}}</td>
+  <td>{{$ctrl.omdbi.Year}}</td>
+  <td>{{$ctrl.omdbi.Genre}}</td>
+  <td>{{$ctrl.omdbi.Actors}}</td>
+  <td>{{$ctrl.omdbi.Director}}</td>
+  <td>{{$ctrl.omdbi.Language}}</td>
+  <td>{{$ctrl.omdbi.Runtime}}</td>
+  <td>  <button type="submit" class="btn btn-primary" ng-click="$ctrl.addThing()">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true">
+   </span>
+    Add New</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<div class="container" >
+  <div >
+  <table class="table  ">
+  <h3 align="center">  <label class="label label-default">Curent movies</label></h3>
+<tr>
+  <th>Poster</th>
+  <th>Move Name</th>
+  <th>Year</th>
+  <th>Genere</th>
+  <th>Star cast</th>
+  <th>Director</th>
+  <th>Language</th>
+  <th>Duration</th>
+</tr>
+<tbody>
+  <tr ng-repeat="moves in $ctrl.awesomeThings">
+    <td><img src="{{moves.poster}}" alt="image" width="150" height="150"/></td>
+    <td>{{moves.title}}</td>
+    <td>{{moves.year}}</td>
+    <td>{{moves.genere}}</td>
+    <td>{{moves.starcast}}</td>
+    <td>{{moves.director}}</td>
+    <td>{{moves.language}}</td>
+    <td>{{moves.duration}}</td>
+    <td><button type="submit"  class="btn btn-primary center-block" ng-click="$ctrl.deleteMovie(moves)" >
+      <span class="glyphicon glyphicon-trash" aria-hidden="true">
+    </span>  Delete Movie</button></td>
+<!-- <td>
+    <option    ng-repeat="state in $ctrl.newUniquestate"    value="{{state}}">{{state}}</option>
+  </select>
+</td>
+<td>
+  <select>
+    <option ng-repeat="city in $ctrl.newUniquecity" value="{{city}}">{{city}}</option>
+  </select>
+</td>
+<td>
+<!-- <select x-ng-change="$ctrl.finditem()" ng-model="address"  >
+  <option   ng-repeat="address in $ctrl.newUniqueaddress" >{{address}}</option>
+</select></td> -->
+  </tr>
+
+</tbody>
+  </table>
+
+
+
+
+
+</div>
+</div>

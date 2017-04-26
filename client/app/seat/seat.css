@@ -1,0 +1,14 @@
+#image {
+  position: absolute;
+  left: 100;
+  top: 100;
+}
+#text {
+  z-index: 100;
+  position: absolute;
+  color: white;
+  font-size: 2px;
+  font-weight: bold;
+  /*left: 150px;
+  top: 350px;*/
+}

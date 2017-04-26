@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="row  " >
+    <div class="col-md-12" >
+
+  <span class=" label-success form-control"  style="font-size:1.3em ;text-align: center; ">Thank You for Booking the tickets</span>
+
+</div>
+</div><br>
+
+    <div class="col-md-4" ng-repeat="p in $ctrl.awesomeThings"  >
+
+
+
+            <img src={{p.poster}} alt="image" class="img-responsive" width="100%" height="auto"    />
+
+        </div>
+
+<div class="col-md-5">
+<div class=" panel panel-info " >
+<table class="table table-responsive ">
+  <tr>
+  <td>
+  <h4>  Movie Name:{{$ctrl.movietitle}}</h4>
+</td>
+  </tr>
+
+  <tr>
+  <td>
+ <h4>Therater :{{$ctrl.theartername}}</h4>
+</td>
+  </tr>
+  <tr>
+  <td>
+ <h4> Show Date:  {{$ctrl.date}}</h4>
+</td>
+  </tr>
+  <tr>
+  <td>
+<h4> Show Time:  {{$ctrl.time}} hr</h4>
+</td>
+  </tr>
+  <tr>
+  <td>
+<h4>Seat Number:{{$ctrl.seat}}</h4>
+</td>
+  </tr>
+  <tr>
+  <td>
+  <h4>Amount Paid:{{$ctrl.price}}</h4>
+</td>
+  </tr>
+  <tr>
+  <td >
+Ticket Number: <span><b>{{$ctrl.ticketid}}</b></span>
+</td>
+  </tr>
+
+  </div>
+</table>
+    </div>
+
+</div>
+<div class="col-md-3">
+  <div>
+
+
+  <img class="image-responsive" src="/assets/images/kotak.jpg" width="100%"  height="auto"/>
+
+
+</div>
+</div>
+</div>

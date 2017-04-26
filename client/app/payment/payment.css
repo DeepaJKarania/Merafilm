@@ -1,0 +1,16 @@
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.borderless {
+ border:none;
+}
+.font-size
+{
+
+  font-size: 2em;
+}
+.textcenter
+{
+  text-align: center;
+}

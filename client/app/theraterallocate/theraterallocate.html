@@ -1,0 +1,221 @@
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/datepicker.css" />
+<script src="bower_components/bootstrap/dist/js/bootstrap-datepicker.js"></script>
+
+<div class="container" ng-repeate="moves in $ctrl.find1">
+  <div class="row" >
+    <div class =".col-sm-12">
+  <form  name="form">
+
+   <input type="text" name="title" ng-model="$ctrl.title" placeholder="Enter the movie" class="form-control" required/>
+   <span class="glyphicon glyphicon-asterisk" style="color:red" aria-hidden="true">
+   </span>
+
+   <input type="text" name="location" ng-model="$ctrl.location1" placeholder="Enter the director name" class="form-control" /><br>
+   <button type="submit" class="btn btn-primary center-block" ng-click="$ctrl.finditem()" ng-disabled="form.$invalid" >
+     <span class="glyphicon glyphicon-search" aria-hidden="true">
+   </span>  Search</button>
+ </form>
+
+<div class="table-responsive" ng-if="$ctrl.find1[0].title"  >
+     <table class="table ">
+<thead>
+   <tr>
+     <th>Poster</th>
+     <th>Move Name</th>
+     <th>Year</th>
+     <th>Genere</th>
+     <th>Star cast</th>
+     <th>Director</th>
+     <th>Language</th>
+     <th>Duration</th>
+     <th>state</th>
+     <th>location</th>
+     <th>Start Time</th>
+     <th>Date</th>
+     <th>Seat</th>
+   </tr>
+ </thead>
+   <tbody>
+     <!--find-->
+     <tr ng-repeat="moves in $ctrl.find1">
+    {{moves}}
+
+       <td><img src="{{moves.poster}}" class="img-rounded pull-xs-left" alt="image"  width="150" height="150"/></td>
+
+       <td>{{moves.title}}<form><input type="hidden" name="mid" id="mid"  value="{{moves.title}}"/></form></td>
+       <td>{{moves.year}}</td>
+       <td>{{moves.genere}}</td>
+       <td>{{moves.starcast}}</td>
+       <td>{{moves.director}}</td>
+       <td>{{moves.language}}</td>
+       <td>{{moves.duration}}</td>
+
+   <td>
+
+     <select class="selectpicker"  ng-change="$ctrl.findcity()" ng-model="$ctrl.state" name="state"  required >
+       <option hidden>select state</option>
+       <option    ng-repeat="state in $ctrl.newUniquestate"    value="{{state}}">{{state}}</option>
+       <!-- {{state._id}} -->
+     </select>
+   </td>
+   <td>
+     <select class="selectpicker" ng-change="$ctrl.getseat()" ng-model="$ctrl.city" name="city" >
+       <option hidden>select Location</option>
+       <option ng-repeat="city in $ctrl.newUniquecity"  value="{{city}}">{{city}}</option>
+     </select>
+
+     {{city}}
+   </td>
+   <td >
+    <select class="selectpicker" ng-model="$ctrl.time" name="time" >
+      <option value="" hidden>select Movie Timing</option>
+     <option  value="09:15" >09:15</option>
+     <option  value="13:30" >13:30</option>
+     <option  value="17:00" >17:00</option>
+      <option  value="20:00" >20:00</option>
+   </select></td>
+   <td>
+     <div >
+                    <input  type="text" placeholder="click to show datepicker" name="date"  id="date" ng-model="$ctrl.date" required/>
+                </div>
+
+                <script type="text/javascript">
+                            // When the document is ready
+                            $(document).ready(function () {
+
+                                $('#date').datepicker({
+
+
+                                    format: "dd/mm/yyyy"
+
+                                });
+
+
+                            });
+                        </script>
+
+   </td>
+   <td ng-repeat="s in $ctrl.s">
+{{s.seat}}
+<input type="hidden" name="seat" id="seat" value="{{s.seat}}" />
+   </td>
+     </tr>
+
+
+   </tbody>
+     </table>
+     <button type="submit" class="btn btn-primary center-block" ng-click="$ctrl.addThing()" >
+       <span class="glyphicon glyphicon-plus" aria-hidden="true">
+     </span>  Add Movie</button>
+</div>
+
+
+<!-- <script>
+var app = angular.module('myapp', []);
+
+  //Define Controller
+ app.controller('myCtrl',function($scope){
+
+
+   $scope.dates = [];
+   $scope.date5=function()
+   {
+     var someDate = new Date();
+
+     for(var i=1;i<=5;i++)
+     {
+     someDate.setDate(someDate.getDate() + 1);
+      $scope.dates.push(someDate.getDate());
+    }
+
+    console.log( $scope.dates );
+
+  }
+
+
+ });
+</script> -->
+
+
+
+
+     <div class="table-responsive">
+          <table class="table ">
+            <thead>
+            <tr >
+              <th>
+              Title
+            </th>
+            <th>
+            State
+          </th>
+          <th>
+          Location
+        </th>
+        <th>
+        Start Time
+      </th>
+      <th>
+      Date
+    </th>
+    <th>
+    Seat
+  </th>
+            </tr>
+            <tr ng-repeat="data in $ctrl.movie">
+            <td >
+                {{data.m_id}}
+            </td>
+
+            <td >
+                {{data.state}}
+            </td>
+            <td >
+                {{data.location}}
+            </td>
+            <td >
+              <div ng-hide="$ctrl.show==$index">
+                {{data.start_time}}
+              </div>
+              <div  >
+                <select class="selectpicker" ng-model="data.start_time" name="time" ng-show="$ctrl.show==$index" >
+                  <option hidden>select Movie Timing</option>
+                 <option  value="09:15" >09:15</option>
+                 <option  value="13:30" >13:30</option>
+                 <option  value="17:00" >17:00</option>
+                  <option  value="20:00" >20:00</option>
+               </select>
+              </div>
+            </td>
+            <td >
+              <div ng-hide="$ctrl.show==$index" >
+                {{data.date}}
+              </div>
+              <div>
+                <input type="text" ng-model="data.date" ng-show="$ctrl.show==$index"  ng-pattern='/^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[012])\/(19\d\d|20[12]\d)$/'/>
+              </div>
+
+            </td>
+            <td >
+                {{data.seat}}
+            </td>
+            <td><button type="submit"  class="btn btn-primary center-block" ng-click="$ctrl.edit($index)" >
+
+            </span>  Edit</button></td>
+            <td><button type="submit"  class="btn btn-primary center-block" ng-click="$ctrl.updatething(data)" >
+              <span class="glyphicon glyphicon-ok" aria-hidden="true">
+            </span>  Update</button></td>
+            <td><button type="submit" class="btn btn-primary center-block" ng-click="$ctrl.deletesch(data)" >
+              <span class="glyphicon glyphicon-trash" aria-hidden="true">
+            </span>  Delete</button></td>
+          </tr>
+            </thead>
+          </table>
+          </div>
+   </div>
+<div >
+
+
+
+
+</div>

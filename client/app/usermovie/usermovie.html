@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+  <div class="col-lg-12">
+    <h1>Show Movies</h1>
+  <table class="table">
+
+      <tr>
+        <th>Movie Name</th>
+        <th>Description</th>
+        <th>Time</th>
+        <th>Photo</th>
+
+      </tr>
+
+    <tbody>
+      <tr ng-repeat="thing in $ctrl.awesomeThings">
+        <td>{{thing.name}}</td>
+        <td>{{thing.description}}</td>
+        <td>{{thing.time}}</td>
+        <td><img src ="assets/images/{{thing.name}}.jpg"</td>
+
+      
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>

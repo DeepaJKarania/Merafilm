@@ -1,0 +1,166 @@
+  <style>
+
+  #image{
+
+
+
+
+    position: absolute;
+
+  }
+  #text {
+
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+
+  }
+
+  rect{
+
+
+  fill:black;stroke:blue;stroke-width:5;opacity:0.5;
+
+  }
+  rect:hover
+
+  {
+
+  fill:red;
+  }
+
+
+
+  </style>
+<div class="container" >
+  <div class="row">
+  <div class="col-md-4">
+    <table class="table">
+      <tr><th><h3>    <span class="label label-primary">Booking Details</span></h3></th></tr>
+      <tr><td>
+<h4>    <span > Movie Name: {{$ctrl.movietitle}}</span></h4></td></tr>
+<tr><td><h4>    <span > Therater :{{$ctrl.name1}}</span></h4></td></tr>
+<tr><td><h4>    <span > Show Date:  {{$ctrl.date}}</span></h4></td></tr>
+<tr><td><h4>    <span> Show Time:  {{$ctrl.time}} hr</span></h4><td></tr>
+
+  <tr ng-if="$ctrl.selectedseat.length>0"><td><h4>   <span >  Slected Seat:</span><span ng-repeat="seat in $ctrl.selectedseat">  {{seat}} ,</span></h4><td></tr>
+
+
+</table>
+<h2>    <span  class="label label-primary "  style="opacity:1"> Total: <span class="badge " style="font-size:1em"> Rs {{$ctrl.totalprice||0}}</span></span></h2>
+<span class="form-group">
+<button class="btn btn-danger" ng-if="$ctrl.totalprice>0"  style="font-size:1em" ng-click="$ctrl.paymentpage()">procced to Pay</button>
+</span>
+
+
+  </div>
+
+<!-- <script>
+
+// var row=2;
+// var col=2;
+//
+// var x = 10;
+// var    y = 10;
+var svgns = "http://www.w3.org/2000/svg";
+for (var i = 0; i < 3; i++) {
+
+  var rect = document.createElementNS(svgns, 'rect');
+  rect.setAttributeNS(null, 'x', x);
+  rect.setAttributeNS(null, 'y', y);
+  rect.setAttributeNS(null, 'height', '30');
+  rect.setAttributeNS(null, 'width', '30');
+  rect.setAttributeNS(null, 'fill', '#'+Math.round(0xffffff * Math.random()).toString(16));
+  document.getElementById('svgOne').appendChild(rect);
+
+  //x=x+40;
+for(var j=0;j<15;j++){
+  //x=x+40;
+y=y+40;
+    var rect = document.createElementNS(svgns, 'rect');
+    rect.setAttributeNS(null, 'x', x);
+    rect.setAttributeNS(null, 'y', y);
+    rect.setAttributeNS(null, 'height', '30');
+    rect.setAttributeNS(null, 'width', '30');
+    //rect.append('text').text("j"+j);
+    // rect.setAttributeNS(null, 'fill', '#00FF00');
+    document.getElementById('svgOne').appendChild(rect);
+    console.log(j);
+if(j>=4)
+{
+  console.log("fff");
+  x+=40;
+  y=10;
+}
+
+//y=y+20;
+}
+
+}
+
+
+</script> -->
+
+<!-- <svg id='svgOne' width="500" height="500" >
+
+</svg> -->
+<div class="col-md-8">
+
+  <h4>    <span  class="label label-primary pull-right"> Ticket Price: {{$ctrl.seats[0].price}}</span></h4>
+<h4><span class="label label-primary">No.of Ticket</span>
+      <select class="selectpicker"  ng-model="$ctrl.s" >
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select></h4>
+<table>
+
+
+ <div   ng-repeat="x in $ctrl.seats[0].rows">
+
+
+<span id="text" >
+  {{x.rn}}
+
+<span   ng-repeat="x1 in x.s track by $index">
+<!-- <span  id="text">{{x1}}</span> -->
+{{x1}}
+
+
+<svg height="25" width="40"  >
+{{x1}}
+  <rect x="0" y="10" rx="20" ry="20" width="40" height="20" id="{{x.rn+x1}}" ng-click=" $ctrl.seat1(x.rn+x1)"  >
+</svg>
+
+<!-- <img  src="assets/images/book.gif" /> -->
+
+
+
+
+
+</span>
+
+</span>
+
+
+<!-- {{x.seatPlan.rows[0].rn}}{{x.seatPlan.rows[0].s}} -->
+
+</div>
+<span class="table-responsive">
+  <table class="table" width="29px" border="2px" style="bg-color:grey">
+    <tr>
+      <td style="text-align:center;background:yellow;color:grey;font-size:2em">
+Screen this way
+    </td></tr>
+  </table></span>
+</div>
+</div>
+</div>

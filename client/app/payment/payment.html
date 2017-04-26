@@ -1,0 +1,100 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class="row">
+
+      <div class="col-md-6  panel panel-info" >
+        <div class="panel-heading"><h4><span>Payment Details</span></h4></div>
+        <div class="panel-body">
+
+<form class="form-group" name="form">
+
+<table class="table table-responsive">
+  <tr><td>
+  <input type="number" name="number" class="form-control" placeholder="card number"  ng-model="$ctrl.number" required/>
+
+</td></tr>
+<tr><td>  <input type="text"   class="form-control"  placeholder="Name on Card" ng-model="$ctrl.name" required/></td></tr>
+<tr><td><h5>Exp Month:
+<select class="selectpicker">
+<option value="01">01(Jan)</option>
+<option value="02">02(Feb)</option>
+<option value="03">03(Mar)</option>
+<option value="04">04(Apr)</option>
+<option value="05">05(May)</option>
+<option value="06">06(Jun)</option>
+<option value="07">07(Jul)</option>
+<option value="08">08(Aug)</option>
+<option value="09">09(Sep)</option>
+<option value="10">10(Oct)</option>
+<option value="11">11(Nov)</option>
+<option value="12">12(Dec)</option>
+
+</select>
+
+
+
+Exp Year: <select class="selectpicker">
+<option  ng-repeat="y in $ctrl.year" value="{{y}}" >{{y}}</option>
+
+</select>
+</h5>
+</td>
+</tr>
+<tr>
+  <td>
+<input type="password" placeholder="cvv" ng-model="$ctrl.cvv"   required/>
+</td>
+</tr>
+<tr>
+  <td>
+    <button class="btn btn-danger" ng-click="$ctrl.addthing()" ng-if="!form.$invalid">Pay</button>
+  </td>
+</tr>
+</table>
+
+
+</div>
+
+</form>
+
+
+
+          </div>
+
+        <div class="col-md-4">
+          <div class=" panel panel-info">
+<span style="font-size:1.3em ;text-align: center; " class="form-control  label-danger " >Booking summary</span>
+<table class="table table-responsive">
+
+  <tr><td>
+  <h4>    <span> Movie Name: {{$ctrl.movietitle}}</span></h4></td></tr>
+  <tr><td><h4>    <span > Therater :{{$ctrl.theartername}}</span></h4></td></tr>
+  <tr><td><h4>    <span > Show Date:  {{$ctrl.date}}</span></h4></td></tr>
+  <tr><td><h4>    <span> Show Time:  {{$ctrl.time}} hr</span></h4><td></tr>
+
+  <tr ><td><h4>   <span >  Slected Seat:</span><span ng-repeat="seat in $ctrl.seat">  {{seat}} ,</span></h4><td></tr>
+<tr><td><h4>    <span> Total Ticket Price:  {{$ctrl.totalbill}} </span></h4><a href="#" ng-click="$ctrl.totalpayablebill()">click to see bill summary</a><td></tr>
+<tr ng-if="$ctrl.v>0"><td><h5>    <lable class="label label-default"> Booking Fees: </lable><span class="pull-right"> {{$ctrl.bookingfee}} </span><br><br>
+  <label class="label label-default"> Service Tax @ 14%  : </label><span class="pull-right"> {{$ctrl.s_tax}} </span><br><br>
+    <label class="label label-default">Swachh Bharat Cess @ 0.50%  : </label><span class="pull-right"> {{$ctrl.sbharat}} </span><br><br>
+    <label class=" label label-default">Krishi Kalyan Cess @ 0.50%  : </label><span class="pull-right"> {{$ctrl.krishi}} </span><br><br>
+</h5><td></tr>
+
+</table>
+</div>
+
+
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+
+</div>

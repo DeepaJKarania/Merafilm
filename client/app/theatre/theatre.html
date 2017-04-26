@@ -1,0 +1,62 @@
+
+
+<div class="container"><h1 align="center"><label >Enter the theater details</label></h1>
+<form  name="form">
+
+ <input type="text" name="state" ng-model="$ctrl.state" placeholder="Enter the state" class="form-control" required/><br>
+
+ <input type="text" name="location" ng-model="$ctrl.location1" placeholder="Enter the theater address" class="form-control" required/><br>
+ <select class="selectpicker  form-control" style="color:grey"  name="seat" ng-model="$ctrl.seat" required >
+<option value="" disabled selected hidden>select theater capacity</option>
+<option value="80">80 seats</option>
+<option value="100">100 seats</option>
+<option value="130">130 seats</option>
+ </select>
+ <button type="submit" class="btn btn-primary center-block" ng-click="$ctrl.addThing()" ng-disabled="form.$invalid">
+   <span class="glyphicon glyphicon-plus" aria-hidden="true">
+ </span>  Add Theatre</button>
+ </form><br><br>
+
+
+
+ <table class="table table-responsive">
+   <tr>
+     <th>State</th>
+     <th>Location</th>
+     <th>seats</th>
+   </tr>
+<tbody>
+  <form >
+  <tr ng-repeat="thing in $ctrl.awesomeThings">
+<td><input type="text" value="{{thing.state}}" ng-disabled="disable" /></td>
+<td><input type="text" value="{{thing.location}}" ng-disabled="disable" ></td>
+<td>
+  <input type="text"  value="{{thing.seat}}"  id="useat" ng-model="thing.seat"  ng-disabled="disable"></input>
+  <!-- <select class="selectpicker" name="useat" >
+  <option value="80" ng-model="$ctrl.useat">80 seats</option>
+  <option value="100">100 seats</option>
+  <option value="130">130 seats</option>
+</select> -->
+
+</td>
+
+<td><span ng-init="disable=true"> <a  ng-click="disable=false" style="color:green" href="#">Edit</a></span></td>
+<td><button type="submit" ng-disabled="disable" class="btn btn-primary center-block" ng-click="$ctrl.updatetheater(thing)" >
+  <span class="glyphicon glyphicon-ok" aria-hidden="true">
+</span>  Update</button></td>
+<td><button type="submit" class="btn btn-primary center-block" ng-click="$ctrl.deletetheater(thing)" >
+  <span class="glyphicon glyphicon-trash" aria-hidden="true">
+</span>  Delete</button></td>
+  </tr>
+
+
+
+
+
+</form>
+</tbody>
+</table>
+ </div>
+
+
+</div>
